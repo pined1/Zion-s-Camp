@@ -5,7 +5,373 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zions Camp 2025 - Martin's Cove Trek</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --forest-green: #2d5a27;
+            --sky-blue: #87ceeb;
+            --earthy-beige: #d2b48c;
+            --warm-white: #faf9f6;
+            --dark-earth: #8b4513;
+            --light-sage: #9caf88;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: var(--warm-white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(45, 90, 39, 0.4), rgba(45, 90, 39, 0.6)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%232d5a27" width="1200" height="800"/><path fill="%23f4f1eb" opacity="0.1" d="M0,400 Q300,200 600,400 T1200,400 V800 H0 Z"/><circle fill="%2387ceeb" opacity="0.3" cx="900" cy="150" r="100"/></svg>');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content h2 {
+            font-size: 1.8rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .hero-quote {
+            font-size: 1.3rem;
+            font-style: italic;
+            opacity: 0.9;
+            border-left: 4px solid var(--earthy-beige);
+            padding-left: 20px;
+            margin-top: 2rem;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 80px 0;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        section:nth-child(even) {
+            background-color: #f8f7f4;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--forest-green);
+            margin-bottom: 3rem;
+            font-weight: 600;
+        }
+
+        /* Overview Section */
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .overview-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .overview-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .overview-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Itinerary Section */
+        .itinerary-timeline {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .day-card {
+            background: white;
+            margin: 2rem 0;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-left: 6px solid var(--forest-green);
+            position: relative;
+        }
+
+        .day-card:nth-child(even) {
+            border-left-color: var(--sky-blue);
+        }
+
+        .day-title {
+            font-size: 1.5rem;
+            color: var(--forest-green);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .day-activities {
+            list-style: none;
+            margin-left: 1rem;
+        }
+
+        .day-activities li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .day-activities li:last-child {
+            border-bottom: none;
+        }
+
+        /* Packing List */
+        .packing-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .packing-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .category-title {
+            font-size: 1.3rem;
+            color: var(--forest-green);
+            margin-bottom: 1rem;
+            text-align: center;
+            padding: 0.5rem;
+            background: var(--light-sage);
+            border-radius: 10px;
+            color: white;
+        }
+
+        .packing-list {
+            list-style: none;
+        }
+
+        .packing-list li {
+            padding: 0.7rem;
+            margin: 0.5rem 0;
+            background: #f9f9f9;
+            border-radius: 8px;
+            border-left: 3px solid var(--earthy-beige);
+            transition: all 0.3s ease;
+        }
+
+        .packing-list li:hover {
+            background: #f0f0f0;
+            transform: translateX(5px);
+        }
+
+        /* Spiritual Theme */
+        .spiritual-theme {
+            background: linear-gradient(135deg, var(--forest-green), var(--light-sage));
+            color: white;
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .theme-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .scripture-quote {
+            font-size: 1.4rem;
+            font-style: italic;
+            margin: 2rem 0;
+            padding: 2rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Photo Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            height: 200px;
+            background: var(--light-sage);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1));
+            transition: opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        .gallery-item:hover::before {
+            opacity: 1;
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            margin: 1rem 0;
+            border-radius: 15px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            background: var(--light-sage);
+            color: white;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: var(--forest-green);
+        }
+
+        .faq-answer {
+            padding: 1.5rem;
+            display: none;
+            background: white;
+        }
+
+        .faq-answer.active {
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--forest-green);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--earthy-beige);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content h2 {
+                font-size: 1.3rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            section {
+                padding: 50px 0;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+        }
+
+        /* Scroll animations */
+        @media (prefers-reduced-motion: no-preference) {
+            .animate-on-scroll {
+                opacity: 0;
+                transform: translateY(30px);
+                transition: all 0.8s ease;
+            }
+            
+            .animate-on-scroll.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Hero Section -->
@@ -17,7 +383,236 @@
         </div>
     </section>
 
+    <!-- Overview Section -->
+    <section id="overview">
+        <div class="container">
+            <h2 class="section-title">Trek Overview</h2>
+            <p style="text-align: center; font-size: 1.2rem; max-width: 800px; margin: 0 auto 3rem;">
+                Join us for a spiritually enriching journey following in the footsteps of pioneers at the historic Martin's Cove. 
+                This youth trek combines adventure, reflection, and faith-building experiences in the beautiful Wyoming wilderness.
+            </p>
+            
+            <div class="overview-grid">
+                <div class="overview-card animate-on-scroll">
+                    <div class="overview-icon">📅</div>
+                    <h3>When</h3>
+                    <p><strong>[Insert Start Date]</strong> to <strong>[Insert End Date]</strong></p>
+                </div>
+                
+                <div class="overview-card animate-on-scroll">
+                    <div class="overview-icon">📍</div>
+                    <h3>Where</h3>
+                    <p><strong>Martin's Cove, Wyoming</strong><br>Historic Pioneer Trail Site</p>
+                </div>
+                
+                <div class="overview-card animate-on-scroll">
+                    <div class="overview-icon">👥</div>
+                    <h3>Who</h3>
+                    <p><strong>Youth & Leaders</strong><br>Organized by [Ward/Stake Name]</p>
+                </div>
+                
+                <div class="overview-card animate-on-scroll">
+                    <div class="overview-icon">📞</div>
+                    <h3>Contact</h3>
+                    <p><strong>Camp Director:</strong><br>[Name, Contact Info]</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Itinerary Section -->
+    <section id="itinerary">
+        <div class="container">
+            <h2 class="section-title">Daily Itinerary</h2>
+            
+            <div class="itinerary-timeline">
+                <div class="day-card animate-on-scroll">
+                    <div class="day-title">
+                        🚌 Day 1 - Travel & Orientation
+                    </div>
+                    <ul class="day-activities">
+                        <li><strong>7:00 AM</strong> - Depart from [Meeting Place]</li>
+                        <li><strong>12:30 PM</strong> - Arrive at Martin's Cove</li>
+                        <li><strong>1:30 PM</strong> - Set up camp</li>
+                        <li><strong>3:00 PM</strong> - Orientation & Safety Briefing</li>
+                        <li><strong>6:00 PM</strong> - Dinner</li>
+                        <li><strong>7:30 PM</strong> - Fireside & Devotional</li>
+                        <li><strong>9:30 PM</strong> - Lights Out</li>
+                    </ul>
+                </div>
+                
+                <div class="day-card animate-on-scroll">
+                    <div class="day-title">
+                        🥾 Day 2 - Trek & Reflection
+                    </div>
+                    <ul class="day-activities">
+                        <li><strong>6:30 AM</strong> - Wake-up & Breakfast</li>
+                        <li><strong>8:00 AM</strong> - Begin trek through Martin's Cove</li>
+                        <li><strong>12:00 PM</strong> - Lunch on trail</li>
+                        <li><strong>1:00 PM</strong> - Women's Pull / Men's Support</li>
+                        <li><strong>4:00 PM</strong> - Return to camp / Rest</li>
+                        <li><strong>6:00 PM</strong> - Dinner</li>
+                        <li><strong>7:30 PM</strong> - Testimony Meeting</li>
+                        <li><strong>10:00 PM</strong> - Quiet Time</li>
+                    </ul>
+                </div>
+                
+                <div class="day-card animate-on-scroll">
+                    <div class="day-title">
+                        🔥 Day 3 - Return & Closing
+                    </div>
+                    <ul class="day-activities">
+                        <li><strong>7:00 AM</strong> - Breakfast & Camp Breakdown</li>
+                        <li><strong>9:00 AM</strong> - Closing devotional</li>
+                        <li><strong>10:00 AM</strong> - Depart for home</li>
+                        <li><strong>3:00 PM</strong> - Arrive back at [Location]</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packing List Section -->
+    <section id="packing">
+        <div class="container">
+            <h2 class="section-title">What to Pack</h2>
+            
+            <div class="packing-categories">
+                <div class="packing-category animate-on-scroll">
+                    <div class="category-title">👕 Clothing</div>
+                    <ul class="packing-list">
+                        <li>Trek-approved modest clothing (long skirts/pants, sleeves)</li>
+                        <li>Comfortable hiking shoes/boots</li>
+                        <li>Hat or bandana</li>
+                        <li>Warm layers (it can get cold at night)</li>
+                        <li>Rain poncho or jacket</li>
+                    </ul>
+                </div>
+                
+                <div class="packing-category animate-on-scroll">
+                    <div class="category-title">🎒 Essential Gear</div>
+                    <ul class="packing-list">
+                        <li>Sleeping bag and sleeping pad</li>
+                        <li>Refillable water bottle (2 recommended)</li>
+                        <li>Personal hygiene items</li>
+                        <li>Headlamp/flashlight</li>
+                        <li>Scriptures & small journal</li>
+                        <li>Small daypack</li>
+                        <li>Trek name tag</li>
+                    </ul>
+                </div>
+                
+                <div class="packing-category animate-on-scroll">
+                    <div class="category-title">🌟 Optional Items</div>
+                    <ul class="packing-list">
+                        <li>Sunglasses</li>
+                        <li>Gloves</li>
+                        <li>Bug spray</li>
+                        <li>Sunscreen</li>
+                        <li>Trail snacks</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Spiritual Theme Section -->
+    <section class="spiritual-theme">
+        <div class="container">
+            <div class="theme-content animate-on-scroll">
+                <h2 style="font-size: 2.5rem; margin-bottom: 2rem;">Our Spiritual Focus</h2>
+                <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">"Faith in Every Footstep"</h3>
+                
+                <div class="scripture-quote">
+                    "[Insert Theme Scripture Reference]"<br>
+                    <small style="opacity: 0.8;">— Theme Scripture</small>
+                </div>
+                
+                <p style="font-size: 1.2rem; line-height: 1.8;">
+                    This trek is more than a historical reenactment—it's a journey of faith, sacrifice, and spiritual growth. 
+                    As we walk where pioneers walked, we'll discover how their faith and determination can inspire our own journey 
+                    of discipleship and service.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Gallery Section -->
+    <section id="gallery">
+        <div class="container">
+            <h2 class="section-title">Trek Experience</h2>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item animate-on-scroll">
+                    <div>📸<br>Martin's Cove<br>Historic Site</div>
+                </div>
+                <div class="gallery-item animate-on-scroll">
+                    <div>🚶‍♀️<br>Women's Pull<br>Experience</div>
+                </div>
+                <div class="gallery-item animate-on-scroll">
+                    <div>🔥<br>Evening Testimony<br>Meeting</div>
+                </div>
+                <div class="gallery-item animate-on-scroll">
+                    <div>🏕️<br>Camp Life<br>& Fellowship</div>
+                </div>
+                <div class="gallery-item animate-on-scroll">
+                    <div>📖<br>Scripture Study<br>& Reflection</div>
+                </div>
+                <div class="gallery-item animate-on-scroll">
+                    <div>🌅<br>Beautiful Wyoming<br>Wilderness</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            
+            <div class="faq-container">
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        Can my child bring a phone? 📱
+                    </div>
+                    <div class="faq-answer">
+                        Phones are not permitted during the trek (except for leaders/emergencies). 
+                        The focus is on spiritual growth, bonding, and reflection without digital distractions.
+                    </div>
+                </div>
+                
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        What about weather and emergencies? 🌦️
+                    </div>
+                    <div class="faq-answer">
+                        We monitor weather closely and have emergency protocols in place. 
+                        All participants should be prepared for rapid weather changes and cold nights due to elevation.
+                    </div>
+                </div>
+                
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        How do we handle food allergies? 🍽️
+                    </div>
+                    <div class="faq-answer">
+                        All meals are provided unless otherwise noted. Please contact [Contact Info] 
+                        for special dietary requests and food allergy accommodations.
+                    </div>
+                </div>
+                
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        What's the cell service like? 📶
+                    </div>
+                    <div class="faq-answer">
+                        Cell service at Martin's Cove is limited and unreliable. 
+                        Emergency communications will be handled through trek leadership.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer>
@@ -28,11 +623,13 @@
                     <p><strong>Emergency Contact:</strong><br>[Name, Phone]</p>
                     <p><strong>Camp Director:</strong><br>[Name, Contact Info]</p>
                 </div>
+                
                 <div class="footer-section">
                     <h3>Organized By</h3>
                     <p>[Ward/Stake Name]</p>
                     <p>First Aid Coordinator: [Name]</p>
                 </div>
+                
                 <div class="footer-section">
                     <h3>Resources</h3>
                     <p>📄 Downloadable PDF Itinerary</p>
@@ -40,11 +637,63 @@
                     <p>📸 Photo Upload Link</p>
                 </div>
             </div>
+            
             <div style="border-top: 1px solid rgba(255,255,255,0.2); padding-top: 2rem; margin-top: 2rem;">
                 <p>&copy; 2025 Zions Camp Martin's Cove Trek. Follow the For the Strength of Youth standards.</p>
             </div>
         </div>
     </footer>
-    <script src="script.js"></script>
+
+    <script>
+        // FAQ Toggle Function
+        function toggleFaq(element) {
+            const answer = element.nextElementSibling;
+            const isActive = answer.classList.contains('active');
+            
+            // Close all FAQ answers
+            document.querySelectorAll('.faq-answer').forEach(faq => {
+                faq.classList.remove('active');
+            });
+            
+            // Open clicked FAQ if it wasn't already active
+            if (!isActive) {
+                answer.classList.add('active');
+            }
+        }
+
+        // Scroll Animation Observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animate-on-scroll elements
+        document.addEventListener('DOMContentLoaded', () => {
+            const animateElements = document.querySelectorAll('.animate-on-scroll');
+            animateElements.forEach(el => observer.observe(el));
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
