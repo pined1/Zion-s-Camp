@@ -478,49 +478,67 @@
     </div>
   </section>
 
-    <!-- Packing List Section -->
-    <section id="packing">
-        <div class="container">
-            <h2 class="section-title">What to Pack</h2>
-            
-            <div class="packing-categories">
-                <div class="packing-category animate-on-scroll">
-                    <div class="category-title">👕 Clothing</div>
-                    <ul class="packing-list">
-                        <li>Trek-approved modest clothing (long skirts/pants, sleeves)</li>
-                        <li>Comfortable hiking shoes/boots</li>
-                        <li>Hat or bandana</li>
-                        <li>Warm layers (it can get cold at night)</li>
-                        <li>Rain poncho or jacket</li>
-                    </ul>
-                </div>
-                
-                <div class="packing-category animate-on-scroll">
-                    <div class="category-title">🎒 Essential Gear</div>
-                    <ul class="packing-list">
-                        <li>Sleeping bag and sleeping pad</li>
-                        <li>Refillable water bottle (2 recommended)</li>
-                        <li>Personal hygiene items</li>
-                        <li>Headlamp/flashlight</li>
-                        <li>Scriptures & small journal</li>
-                        <li>Small daypack</li>
-                        <li>Trek name tag</li>
-                    </ul>
-                </div>
-                
-                <div class="packing-category animate-on-scroll">
-                    <div class="category-title">🌟 Optional Items</div>
-                    <ul class="packing-list">
-                        <li>Sunglasses</li>
-                        <li>Gloves</li>
-                        <li>Bug spray</li>
-                        <li>Sunscreen</li>
-                        <li>Trail snacks</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
+    
+
+<!-- Packing List Section -->
+<section id="packing">
+  <div class="container">
+    <h2 class="section-title">What to Pack</h2>
+
+    <div class="packing-categories">
+      <div class="packing-category animate-on-scroll">
+        <div class="category-title">👕 Clothing</div>
+        <ul class="packing-list">
+          <li onclick="toggleCheck(this)">Modest clothing (pants, sleeves)</li>
+          <li onclick="toggleCheck(this)">Comfortable hiking shoes/boots</li>
+          <li onclick="toggleCheck(this)">Hat or bandana</li>
+          <li onclick="toggleCheck(this)">Warm layers (it can get cold at night)</li>
+          <li onclick="toggleCheck(this)">Rain poncho or jacket</li>
+        </ul>
+      </div>
+
+      <div class="packing-category animate-on-scroll">
+        <div class="category-title">🎒 Essential Gear</div>
+        <ul class="packing-list">
+          <li onclick="toggleCheck(this)">Sleeping bag and sleeping pad</li>
+          <li onclick="toggleCheck(this)">Refillable water bottle (2 recommended)</li>
+          <li onclick="toggleCheck(this)">Personal hygiene items</li>
+          <li onclick="toggleCheck(this)">Headlamp/flashlight</li>
+          <li onclick="toggleCheck(this)">Scriptures</li>
+          <li onclick="toggleCheck(this)">Small daypack</li>
+        </ul>
+      </div>
+
+      <div class="packing-category animate-on-scroll">
+        <div class="category-title">🌟 Optional Items</div>
+        <ul class="packing-list">
+          <li onclick="toggleCheck(this)">Sunglasses</li>
+          <li onclick="toggleCheck(this)">Gloves</li>
+          <li onclick="toggleCheck(this)">Bug spray</li>
+          <li onclick="toggleCheck(this)">Sunscreen</li>
+          <li onclick="toggleCheck(this)">Trail snacks</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function toggleCheck(item) {
+    item.classList.toggle('checked');
+  }
+</script>
+
+<style>
+  .packing-list li.checked {
+    background: #d2b48c; /* darker earthy beige */
+    color: white;
+    text-decoration: line-through;
+  }
+</style>
+
+
+    
 
     <!-- Spiritual Theme Section -->
     <section class="spiritual-theme">
